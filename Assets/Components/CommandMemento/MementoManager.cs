@@ -33,7 +33,7 @@ namespace Components.CommandMemento.Memento {
 		public IMemento CreateMemento() {
 			return new Memento() { 
 				owner = this,
-				mementables = mementables,
+				mementables = mementables.ToList(),
 				mementos = mementables.Select(p => p.CreateMemento()).ToList()
 			};
 		}

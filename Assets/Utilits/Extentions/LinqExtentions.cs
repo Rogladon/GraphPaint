@@ -14,4 +14,8 @@ public static class LinqExtentions {
 	public static IEnumerable<T> Take<T>(this IEnumerable<T> e, int start, int finish) {
 		return e.Where((p, i) => i >= start && i < finish);
 	}
+
+	public static IEnumerable<T> Copy<T>(this IEnumerable<T> e) {
+		return Enumerable.Range(0, e.Count()).Select(p => e.ElementAt(p));
+	}
 }

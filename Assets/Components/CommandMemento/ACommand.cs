@@ -16,6 +16,6 @@ namespace Components.CommandMemento.Command {
 		/// <summary>
 		/// Срабатывает при выполнении после регистрации
 		/// </summary>
-		protected abstract void OnExecute();
+		protected internal abstract void OnExecute();
 	}
 }
