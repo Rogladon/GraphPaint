@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using Components.CommandMemento.Memento;
 
-namespace Components.Graph {
+namespace Components.Graphs {
 	public class Edge : IMementable, IAppearanceble<Edge> {
 		#region Fields
 		private Node _firstNode;

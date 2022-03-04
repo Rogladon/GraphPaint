@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using Components.CommandMemento.Memento;
+using Components.CommandMemento.Command;
 
-namespace Components.Graph {
+namespace Components.Graphs {
 	public class Graph : IMementable, IAppearanceble<Graph> {
 
 		#region Fields
@@ -24,26 +25,26 @@ namespace Components.Graph {
 			Change();
 		}
 		#region Public Methods
-		public void RemoveNode(Node node) {
+		private void RemoveNode(Node node) {
 			nodes.Remove(node);
 			node.Destroy();
 			OnChange(this);
 		}
-		public void AddNode(Node node) {
+		private void AddNode(Node node) {
 			nodes.Add(node);
 			OnChange(this);
 		}
-		public void AddEdge(Node fn, Node sn) {
+		private void AddEdge(Node fn, Node sn) {
 			var edge = new Edge(fn, sn);
 			fn.AddEdge(edge);
 			sn.AddEdge(edge);
 			OnChange(this);
 		}
-		public void RemoveEdge(Node fn, Node sn) {
+		private void RemoveEdge(Node fn, Node sn) {
 			RemoveEdge(new Edge(fn, sn));
 			OnChange(this);
 		}
-		public void RemoveEdge(Edge edge) {
+		private void RemoveEdge(Edge edge) {
 			edge.Destroy();
 			edges.Remove(edge);
 			OnChange(this);
@@ -71,6 +72,17 @@ namespace Components.Graph {
 			public void Restore() {
 				owner.nodes.Where(p => !nodes.Contains(p)).ForEach(p => owner.RemoveNode(p));
 				nodes.Where(p => !owner.nodes.Contains(p)).ForEach(p => owner.AddNode(p));
+			}
+		}
+		#endregion
+
+		#region Commands
+		public class CmdAddNode : ACommand {
+			public Graph graph;
+			public Vector2 position;
+
+			protected override void OnExecute() {
+				graph.AddNode(new Node(position));	
 			}
 		}
 		#endregion

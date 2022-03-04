@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Components.Graph {
+namespace Components.Graphs {
 	interface IAppearanceble<T> {
 		public event Action<T> OnChange;
 		public event Action<T> OnDestroy;

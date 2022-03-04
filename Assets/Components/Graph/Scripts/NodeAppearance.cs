@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace Components.Graph {
+namespace Components.Graphs {
 	public class NodeAppearance : Appearance<Node> {
 
 		#region Fields

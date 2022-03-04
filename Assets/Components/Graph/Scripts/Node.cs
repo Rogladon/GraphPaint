@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using Components.CommandMemento.Memento;
 
-namespace Components.Graph {
+namespace Components.Graphs {
 	public class Node : IMementable, IAppearanceble<Node> {
 		#region Fields
 		private static int LAST_ID = 0;
