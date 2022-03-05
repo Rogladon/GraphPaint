@@ -22,9 +22,10 @@ namespace Components.Instruments._instruments {
 				movable.GetCommands().ForEach(p => p.Execute());
 			}
 		}
-		private List<MoveDelta> movables;
+		private List<MoveDelta> movables = new List<MoveDelta>();
 		public void FinishExecute(Graph graph, Selected selected) {
 			movables.ForEach(p => p.Commands());
+			movables.Clear();
 		}
 
 		public void StartExecute(Graph graph, Selected selected) {

@@ -32,18 +32,12 @@ namespace Components.Graphs {
 		}
 		private void AddNode(Node node) {
 			nodes.Add(node);
-			NodeAppearance.Create(node);
 			OnChange(this);
 		}
-		private void AddEdge(Node fn, Node sn) {
-			var edge = new Edge(fn, sn);
-			fn.AddEdge(edge);
-			sn.AddEdge(edge);
-			EdgeAppearance.Create(edge);
-			OnChange(this);
-		}
-		private void RemoveEdge(Node fn, Node sn) {
-			RemoveEdge(new Edge(fn, sn));
+		private void AddEdge(Edge edge) {
+			edge.firstNode.AddEdge(edge);
+			edge.secondNode.AddEdge(edge);
+			
 			OnChange(this);
 		}
 		private void RemoveEdge(Edge edge) {
@@ -93,6 +87,15 @@ namespace Components.Graphs {
 
 			protected override void OnExecute() {
 				graph.RemoveNode(node);
+			}
+		}
+		public class CmdAddEdge : ACommand {
+			public Graph graph;
+			public Node firstNode;
+			public Node secondNode;
+
+			protected override void OnExecute() {
+				graph.AddEdge(new Edge(firstNode, secondNode, false));
 			}
 		}
 		#endregion

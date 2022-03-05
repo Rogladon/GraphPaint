@@ -44,6 +44,7 @@ namespace Components.Instruments {
 				Debug.LogError($"Второй instrumentManager: {name}");
 				Destroy(this);
 			} else {
+				_instance = this;
 				if (compound == null) {
 					compound = Resources.FindObjectsOfTypeAll<InstrumentsCompound>().First();
 					if (compound == null)

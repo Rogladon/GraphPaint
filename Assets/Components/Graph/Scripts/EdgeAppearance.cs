@@ -28,6 +28,9 @@ namespace Components.Graphs {
 			_edge = t;
 			line = appearance.GetComponent<LineRenderer>();
 			line.SetPositions(new Vector3[] { t.firstNode.position, t.secondNode.position });
+			Mesh mesh = new Mesh();
+			line.BakeMesh(mesh);
+			appearance.GetComponent<MeshCollider>().sharedMesh = mesh;
 		}
 
 		private void Change(Edge edge) {

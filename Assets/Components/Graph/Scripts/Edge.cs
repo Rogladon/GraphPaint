@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Components.CommandMemento.Memento;
+using Components.CommandMemento.Command;
 
 namespace Components.Graphs {
 	public class Edge : IMementable, IAppearanceble<Edge> {
@@ -25,6 +26,7 @@ namespace Components.Graphs {
 			_firstNode = fn;
 			_secondNode = sn;
 			_isOriented = isOriented;
+			EdgeAppearance.Create(this);
 			Change();
 		}
 

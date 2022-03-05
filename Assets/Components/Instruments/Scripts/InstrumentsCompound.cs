@@ -18,7 +18,7 @@ namespace Components.Instruments {
 
 		public IInstrument this[InstrumentType type] {
 			get {
-				var holder = instruments.FirstOrDefault(p => p.GetType() == GetInstrumentType(type));
+				var holder = instruments.FirstOrDefault(p => p.component.GetType() == GetInstrumentType(type));
 				if (holder != null) return holder.component;
 				Debug.LogError($"{this}:: Нет инструмента типа {type}");
 				return null;

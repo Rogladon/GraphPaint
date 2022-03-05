@@ -9,8 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 518ed429ae7501f4c967b6b34befbdc0, type: 3}
-  m_Name: AddEdge
+  m_Script: {fileID: 11500000, guid: 8360e119d23312d4f927ae34c1564269, type: 3}
+  m_Name: SelectAndMove
   m_EditorClassIdentifier: 
-  instrument:
-    appearanceEdge: {fileID: 6840636627929658944, guid: e83a859fcddccf84d884c51f42928991, type: 3}

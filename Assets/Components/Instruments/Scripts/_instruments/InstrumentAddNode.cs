@@ -7,7 +7,7 @@ using Components.Graphs;
 namespace Components.Instruments._instruments {
 	[System.Serializable]
 	internal class AddNode : IInstrument {
-		private InstrumentManager mg => InstrumentManager.instance;
+		private IInstrumentManager mg => InstrumentManager.instance;
 		public void FinishExecute(Graph graph, Selected selected) {
 			if(PhysicsExtentions.RaycastCameraForTag(out RaycastHit hit, mg.TAG_WORKESPACE))
 				new Graph.CmdAddNode { graph = graph, position = hit.point.Vector2() }.Execute();

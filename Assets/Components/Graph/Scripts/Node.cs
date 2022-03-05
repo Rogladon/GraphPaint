@@ -32,6 +32,7 @@ namespace Components.Graphs {
 			MementoManager.instance.Registry(this);
 			_id = LAST_ID++;
 			_position = position;
+			NodeAppearance.Create(this);
 			Change();
 		}
 		#region Public Methods
@@ -67,7 +68,9 @@ namespace Components.Graphs {
 
 		#region Appearanceble
 		public void Change() {
-			OnChange(this);
+			if (OnChange != null) {
+				OnChange(this);
+			}
 		}
 		public void Destroy() {
 			_edges.ForEach(p => p.Destroy());

@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37ddb6b3cf1d0594eb7047056aab8b4b, type: 3}
   m_Name: InstrumentCompound
   m_EditorClassIdentifier: 
-  instruments: []
+  instruments:
+  - {fileID: 11400000, guid: 9e1a0df0a5459164fb97930f6122d5ff, type: 2}
+  - {fileID: 11400000, guid: 7de28d3436e199c41b5a1c885f1dae36, type: 2}
+  - {fileID: 11400000, guid: e06b95eeabcf93342a0c211554c04bb8, type: 2}

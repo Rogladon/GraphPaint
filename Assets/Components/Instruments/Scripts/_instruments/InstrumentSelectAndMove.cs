@@ -7,9 +7,10 @@ using Components.Graphs;
 namespace Components.Instruments._instruments {
 	[System.Serializable]
 	internal class SelectAndMove : IInstrument {
-		private IInstrument instrument;
+		private IInstrument instrument = null;
 		public void FinishExecute(Graph graph, Selected selected) {
 			instrument?.FinishExecute(graph, selected);
+			instrument = null;
 		}
 
 		public void StartExecute(Graph graph, Selected selected) {
