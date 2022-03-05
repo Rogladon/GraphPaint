@@ -13,6 +13,11 @@ public static class PhysicsExtentions {
 		}
 		return false;
 	}
+	public static Transform GetRaycastCamera() {
+		if (RaycastCamera(out RaycastHit hit)) {
+			return hit.transform;
+		} else return null;
+	}
 	public static bool RaycastCameraForTag(out RaycastHit hit, string tag) {
 		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 		if (Physics.Raycast(ray, out hit)) {
