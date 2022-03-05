@@ -32,12 +32,14 @@ namespace Components.Graphs {
 		}
 		private void AddNode(Node node) {
 			nodes.Add(node);
+			NodeAppearance.Create(node);
 			OnChange(this);
 		}
 		private void AddEdge(Node fn, Node sn) {
 			var edge = new Edge(fn, sn);
 			fn.AddEdge(edge);
 			sn.AddEdge(edge);
+			EdgeAppearance.Create(edge);
 			OnChange(this);
 		}
 		private void RemoveEdge(Node fn, Node sn) {

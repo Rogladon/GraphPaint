@@ -12,6 +12,7 @@ namespace Components.Graphs {
 		#endregion
 
 		#region Properties
+		public static string TemplatePath { get; protected set; }
 		protected abstract string templatePath { get; }
 		protected virtual string templateSelectedPath => "Templates/Selected";
 		#endregion
@@ -22,6 +23,7 @@ namespace Components.Graphs {
 
 		#region Private Methods
 		public void Initialize(T t) {
+			TemplatePath = templatePath;
 			var template = Resources.Load<GameObject>(templatePath);
 			if (template != null) appearance = Instantiate(template, transform);
 			selectedAppearance = SelectedAppearance.Create(gameObject);

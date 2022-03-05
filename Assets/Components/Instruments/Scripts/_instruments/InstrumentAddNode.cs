@@ -5,7 +5,8 @@ using UnityEngine;
 using Components.Graphs;
 
 namespace Components.Instruments._instruments {
-	public class AddNode : IInstrument {
+	[System.Serializable]
+	internal class AddNode : IInstrument {
 		private InstrumentManager mg => InstrumentManager.instance;
 		public void FinishExecute(Graph graph, Selected selected) {
 			if(PhysicsExtentions.RaycastCameraForTag(out RaycastHit hit, mg.TAG_WORKESPACE))
@@ -19,5 +20,11 @@ namespace Components.Instruments._instruments {
 		public void UpdateExecute(Graph graph, Selected selected) {
 			
 		}
+	}
+	[CreateAssetMenu(fileName = "AddNode", menuName = "Instruments/AddNode")]
+	public class InstrumentAddNode : InstrumentHolder {
+		[SerializeField] private AddNode _instrument;
+
+		public override IInstrument component => _instrument;
 	}
 }

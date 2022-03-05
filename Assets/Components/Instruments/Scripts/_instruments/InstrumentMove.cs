@@ -5,7 +5,8 @@ using UnityEngine;
 using Components.Graphs;
 
 namespace Components.Instruments._instruments {
-	public class Move : IInstrument {
+	[System.Serializable]
+	internal class Move : IInstrument {
 		private class MoveDelta {
 			public IMovable movable;
 			public Vector2 delta;
@@ -40,5 +41,11 @@ namespace Components.Instruments._instruments {
 				movables.ForEach(p => p.Move(hit.point.Vector2()));
 			}
 		}
+	}
+	[CreateAssetMenu(fileName = "Move", menuName = "Instruments/Moves")]
+	public class InstrumentMove : InstrumentHolder {
+		[SerializeField] private Move _instrument;
+
+		public override IInstrument component => _instrument;
 	}
 }

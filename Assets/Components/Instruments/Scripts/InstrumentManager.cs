@@ -23,6 +23,7 @@ namespace Components.Instruments {
 
 
 		#region Fields
+		[SerializeField] private InstrumentsCompound compound;
 		private Graphs.Graph currentGraph;
 		private IInstrument currentInstrumentLkm;
 		private Selected selected = new Selected();
@@ -30,9 +31,11 @@ namespace Components.Instruments {
 
 
 		#region Public Methods
-		public void SetInstrumentLkm(IInstrument instrument) {
-			currentInstrumentLkm = instrument;
+		public void SetInstrumentLkm(InstrumentType type) {
+			currentInstrumentLkm = compound[type];
 		}
+
+		public bool ContainsInstrument(InstrumentType type) => compound.Contains(type);
 		#endregion
 
 		#region Private Methods
@@ -41,6 +44,11 @@ namespace Components.Instruments {
 				Debug.LogError($"Второй instrumentManager: {name}");
 				Destroy(this);
 			} else {
+				if (compound == null) {
+					compound = Resources.FindObjectsOfTypeAll<InstrumentsCompound>().First();
+					if (compound == null)
+						Debug.LogError($"{this}:: Не назначен и не найден InstrumentCompound");
+				}
 				currentGraph = new Graphs.Graph();
 				var bcl = new GameObject("InstrumentManagerCollider").AddComponent<BoxCollider>();
 				bcl.transform.SetParent(Camera.main.transform);

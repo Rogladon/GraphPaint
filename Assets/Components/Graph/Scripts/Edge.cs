@@ -25,7 +25,6 @@ namespace Components.Graphs {
 			_firstNode = fn;
 			_secondNode = sn;
 			_isOriented = isOriented;
-			EdgeAppearance.Create(this);
 			Change();
 		}
 

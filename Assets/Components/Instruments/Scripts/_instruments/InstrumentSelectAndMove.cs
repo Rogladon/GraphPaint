@@ -5,7 +5,8 @@ using UnityEngine;
 using Components.Graphs;
 
 namespace Components.Instruments._instruments {
-	public class SelectAndMove : IInstrument {
+	[System.Serializable]
+	internal class SelectAndMove : IInstrument {
 		private IInstrument instrument;
 		public void FinishExecute(Graph graph, Selected selected) {
 			instrument?.FinishExecute(graph, selected);
@@ -26,5 +27,11 @@ namespace Components.Instruments._instruments {
 		public void UpdateExecute(Graph graph, Selected selected) {
 			instrument?.UpdateExecute(graph, selected);
 		}
+	}
+	[CreateAssetMenu(fileName = "SelectAndMove", menuName = "Instruments/SelectAndMove")]
+	public class InstrumentSelectAndMove : InstrumentHolder {
+		[SerializeField] private SelectAndMove _instrument;
+
+		public override IInstrument component => _instrument;
 	}
 }

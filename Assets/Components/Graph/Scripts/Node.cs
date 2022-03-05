@@ -32,7 +32,6 @@ namespace Components.Graphs {
 			MementoManager.instance.Registry(this);
 			_id = LAST_ID++;
 			_position = position;
-			NodeAppearance.Create(this);
 			Change();
 		}
 		#region Public Methods
