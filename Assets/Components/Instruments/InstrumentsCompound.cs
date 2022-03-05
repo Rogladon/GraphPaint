@@ -8,7 +8,7 @@ namespace Components.Instruments {
 		public enum Type {
 			CREATE_NODE,
 			REMOVE_NODE,
-			MOVE_NODE,
+			SELECT_AND_MOVE,
 			CREATE_EDGE
 		}
 
@@ -17,11 +17,9 @@ namespace Components.Instruments {
 				case Type.CREATE_NODE:
 					return new _instruments.AddNode();
 				case Type.REMOVE_NODE:
-
-					break;
-				case Type.MOVE_NODE:
-
-					break;
+					return new _instruments.RemoveNode();
+				case Type.SELECT_AND_MOVE:
+					return new _instruments.SelectAndMove();
 				case Type.CREATE_EDGE:
 
 					break;

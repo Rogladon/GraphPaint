@@ -6,8 +6,8 @@ using Components.Graphs;
 
 namespace Components.Instruments {
 	public interface IInstrument {
-		public void StartExecute(Vector2 position, Graph graph);
-		public void UpdateExecute(Vector2 position, Graph graph);
-		public void FinishExecute(Vector2 position, Graph graph);
+		public void StartExecute(Graph graph, Selected selected);
+		public void UpdateExecute(Graph graph, Selected selected);
+		public void FinishExecute(Graph graph, Selected selected);
 	}
 }

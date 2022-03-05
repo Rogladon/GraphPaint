@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Components.Graphs;
 
 namespace Components.Instruments {
 	public class InstrumentManager : MonoBehaviour {
-		private const string TAG_WORKESPACE = "WORKSPACE";
+		public string TAG_WORKESPACE = "WORKSPACE";
+		
 
 		#region Singlton
 		private static InstrumentManager _instance;
@@ -23,6 +25,7 @@ namespace Components.Instruments {
 		#region Fields
 		private Graphs.Graph currentGraph;
 		private IInstrument currentInstrumentLkm;
+		private Selected selected = new Selected();
 		#endregion
 
 
@@ -46,22 +49,14 @@ namespace Components.Instruments {
 			}
 		}
 		private void Update() {
-			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-			RaycastHit hit;
-			if(Physics.Raycast(ray, out hit)) {
-				Debug.Log(hit);
-				if (hit.transform.CompareTag(TAG_WORKESPACE)) {
-					Lkm(hit.point.Vector2());
-				}
-			}
+			Lkm();
 		}
 
-		private void Lkm(Vector2 position) {
-			Debug.Log(currentInstrumentLkm);
+		private void Lkm() {
 			if (currentInstrumentLkm == null) return;
-			if (Input.GetMouseButtonDown(0)) currentInstrumentLkm.StartExecute(position, currentGraph);
-			if (Input.GetMouseButton(0)) currentInstrumentLkm.UpdateExecute(position, currentGraph);
-			if (Input.GetMouseButtonUp(0)) currentInstrumentLkm.FinishExecute(position, currentGraph);
+			if (Input.GetMouseButtonDown(0)) currentInstrumentLkm.StartExecute(currentGraph, selected);
+			if (Input.GetMouseButton(0)) currentInstrumentLkm.UpdateExecute(currentGraph, selected);
+			if (Input.GetMouseButtonUp(0)) currentInstrumentLkm.FinishExecute(currentGraph, selected);
 		}
 		#endregion
 	}

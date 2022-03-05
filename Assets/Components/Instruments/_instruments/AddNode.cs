@@ -6,15 +6,17 @@ using Components.Graphs;
 
 namespace Components.Instruments._instruments {
 	public class AddNode : IInstrument {
-		public void FinishExecute(Vector2 position, Graph graph) {
-			new Graph.CmdAddNode { graph = graph, position = position }.Execute();
+		private InstrumentManager mg => InstrumentManager.instance;
+		public void FinishExecute(Graph graph, Selected selected) {
+			if(PhysicsExtentions.RaycastCameraForTag(out RaycastHit hit, mg.TAG_WORKESPACE))
+				new Graph.CmdAddNode { graph = graph, position = hit.point.Vector2() }.Execute();
 		}
 
-		public void StartExecute(Vector2 position, Graph graph) {
+		public void StartExecute( Graph graph, Selected selected) {
 			
 		}
 
-		public void UpdateExecute(Vector2 position, Graph graph) {
+		public void UpdateExecute(Graph graph, Selected selected) {
 			
 		}
 	}

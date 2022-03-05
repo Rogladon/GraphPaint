@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Components.CommandMemento.Memento;
+using Components.CommandMemento.Command;
 
 namespace Components.Graphs {
 	public class Node : IMementable, IAppearanceble<Node> {
@@ -35,23 +36,23 @@ namespace Components.Graphs {
 			Change();
 		}
 		#region Public Methods
-		public Node SetColor(int color) {
+		internal Node SetColor(int color) {
 			this._color = color;
 			OnChange(this);
 			return this;
 		}
-		public Node SetNumber(int number) {
+		internal Node SetNumber(int number) {
 			this._number = number;
 			OnChange(this);
 			return this;
 		}
-		public Node SetPosition(Vector2 position) {
+		internal Node SetPosition(Vector2 position) {
 			this._position = position;
 			edges.ForEach(p => p.Change());
 			OnChange(this);
 			return this;
 		}
-		public Node AddEdge(Edge edge) {
+		internal Node AddEdge(Edge edge) {
 			if(edge.firstNode != this && edge.secondNode != this) {
 				Debug.LogError($"node: {id}:: Попытка добавить ребро не связанную с данной вершиной");
 				return this;
@@ -59,7 +60,7 @@ namespace Components.Graphs {
 			this._edges.Add(edge);
 			return this;
 		}
-		public Node RemoveEdge(Edge edge) {
+		internal Node RemoveEdge(Edge edge) {
 			_edges.Remove(edge);
 			return this;
 		}
@@ -106,6 +107,16 @@ namespace Components.Graphs {
 				owner._color = color;
 				owner._number = number;
 				owner._position = position;
+			}
+		}
+		#endregion
+
+		#region Commands
+		public class CmdMove : ACommand {
+			public Node owner;
+			public Vector2 position;
+			protected override void OnExecute() {
+				owner.SetPosition(position);
 			}
 		}
 		#endregion

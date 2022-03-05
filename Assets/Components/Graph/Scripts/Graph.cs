@@ -85,6 +85,14 @@ namespace Components.Graphs {
 				graph.AddNode(new Node(position));	
 			}
 		}
+		public class CmdRemoveNode : ACommand {
+			public Graph graph;
+			public Node node;
+
+			protected override void OnExecute() {
+				graph.RemoveNode(node);
+			}
+		}
 		#endregion
 	}
 }
