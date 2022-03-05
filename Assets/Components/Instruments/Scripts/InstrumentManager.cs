@@ -5,14 +5,14 @@ using UnityEngine;
 using Components.Graphs;
 
 namespace Components.Instruments {
-	public class InstrumentManager : MonoBehaviour {
-		public string TAG_WORKESPACE = "WORKSPACE";
+	public class InstrumentManager : MonoBehaviour, IInstrumentManager {
+		public string TAG_WORKESPACE => "WORKSPACE";
 		
 
 		#region Singlton
 		private static InstrumentManager _instance;
 
-		public static InstrumentManager instance {
+		public static IInstrumentManager instance {
 			get {
 				if (_instance == null)
 					_instance = new GameObject("InstrumentManager").AddComponent<InstrumentManager>();
