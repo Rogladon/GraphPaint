@@ -9,12 +9,13 @@ namespace Components.Graphs {
 	public class Graph : IMementable, IAppearanceble<Graph> {
 
 		#region Fields
-		private List<Node> nodes = new List<Node>();
+		private List<Node> _nodes = new List<Node>();
 		private List<Edge> edges = new List<Edge>();
 		#endregion
 
 		#region Properties
 		public int count => nodes.Count;
+		public List<Node> nodes => _nodes;
 		public event System.Action<Graph> OnChange;
 		public event System.Action<Graph> OnDestroy;
 		#endregion

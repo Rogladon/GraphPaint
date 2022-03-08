@@ -10,7 +10,9 @@ namespace Components.Instruments {
 		SELECT_AND_MOVE,
 		CREATE_EDGE,
 		MOVE,
-		SELECT
+		SELECT,
+		SIMPLE_DRAW,
+		DEEP_SERACH
 	}
 	[CreateAssetMenu(fileName ="InstrumentCompound", menuName ="InstrumentsCompound", order =0)]
 	public class InstrumentsCompound : ScriptableObject{
@@ -53,6 +55,10 @@ namespace Components.Instruments {
 					return typeof(_instruments.Move);
 				case InstrumentType.SELECT:
 					return null;
+				case InstrumentType.SIMPLE_DRAW:
+					return typeof(_instruments.SimpleDraw);
+				case InstrumentType.DEEP_SERACH:
+					return typeof(_instruments.DeepSerch);
 				default:
 					Debug.LogError($"Возможности выбора инструмента: {type} не существует\n" +
 						$"Проверте InstrumentCompound.GetInstrument");

@@ -22,6 +22,11 @@ namespace Components.Instruments {
 			selected.Clear();
 		}
 		public void Add(ISelectable selectable) {
+			if(selectable is NodeAppearance) {
+				var node = (selectable as NodeAppearance).node;
+				Debug.Log($"node: {node}, color: {node.color}");
+				node.neiborhood.ForEach(p => Debug.Log($"node: {node}; neib: {p}"));
+			}
 			selectable.Choice(true);
 			selected.Add(selectable);
 		}

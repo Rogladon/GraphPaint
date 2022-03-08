@@ -28,6 +28,7 @@ namespace Components.Graphs {
 		}
 		private void Change(Node node) {
 			transform.position = node.position;
+			GetComponentInChildren<SpriteRenderer>().color = Colors.GetColorForInt(node.color);
 			//TOODOO
 		}
 		private void DestroyAppearance(Node node) {
