@@ -35,7 +35,7 @@ namespace Components.Instruments {
 			return false;			
 		}
 		public bool Contains(InstrumentType type) {
-			var holder = instruments.FirstOrDefault(p => p.GetType() == GetInstrumentType(type));
+			var holder = instruments.FirstOrDefault(p => p.component.GetType() == GetInstrumentType(type));
 			return holder != null;
 		}
 
