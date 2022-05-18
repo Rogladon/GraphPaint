@@ -30,14 +30,6 @@ namespace Components.HUD{
 			txtButtonCancel.text = "Cancel";
 			buttonCancel.onClick.RemoveAllListeners();
 			buttonOk.onClick.RemoveAllListeners();
-			buttonOk.onClick.AddListener(() => {
-				gameObject.SetActive(false);
-				Clear();
-			});
-			buttonOk.onClick.AddListener(() => {
-				gameObject.SetActive(false);
-				Clear();
-			});
 			return this;
 		}
 
@@ -68,10 +60,18 @@ namespace Components.HUD{
 			return this;
 		}
 		public void Show() {
-			gameObject.SetActive(false);
+			buttonOk.onClick.AddListener(() => {
+				gameObject.SetActive(false);
+				Clear();
+			});
+			buttonOk.onClick.AddListener(() => {
+				gameObject.SetActive(false);
+				Clear();
+			});
+			gameObject.SetActive(true);
 		}
 		public void ShowLog() {
-			gameObject.SetActive(true);
+			Show();
 			buttonCancel.gameObject.SetActive(false);
 		}
 		#endregion
