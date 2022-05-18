@@ -7,6 +7,7 @@ using Components.Algoritm.DrawGraph;
 namespace Components.Algoritm {
 	public enum AlgoritmType {
 		SIMPLE_DRAW,
+		DEEP_SEARCH,
 	}
 	public class AlgoritmManager : MonoBehaviour {
 		#region Singlton
@@ -34,6 +35,9 @@ namespace Components.Algoritm {
 			switch (type) {
 				case AlgoritmType.SIMPLE_DRAW:
 					res = new SimpleDraw().Execute(graph);
+					break;
+				case AlgoritmType.DEEP_SEARCH:
+					res = new DeepSearch().Execute(graph);
 					break;
 				default:
 					res = null;

@@ -37,7 +37,7 @@ namespace Components.Algoritm.DrawGraph {
                 countToFailed--;
                 color++;
             }
-            return new ResultDraw(color, new CommandStack(commands.ToArray()));
+            return new ResultDraw(color-1, new CommandStack(commands.ToArray()));
         }
 	}
 }
