@@ -12,7 +12,7 @@ namespace Components.Graphs {
 
 		private int _id;
 		private List<Edge> _edges = new List<Edge>();
-		private int _color = 0;
+		private int _color = -1;
 		private int _number = -1;
 		private Vector2 _position;
 		#endregion

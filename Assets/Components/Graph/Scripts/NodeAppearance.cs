@@ -9,6 +9,7 @@ namespace Components.Graphs {
 
 		#region Fields
 		private Node _node;
+		private SpriteRenderer spriteRenderer;
 		#endregion
 
 		#region Properties
@@ -25,9 +26,12 @@ namespace Components.Graphs {
 			_node = t;
 			_node.OnChange += Change;
 			_node.OnDestroy += DestroyAppearance;
+			spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+			//TOODOO сделать класс оболчку для всех визуальных эффектов
 		}
 		private void Change(Node node) {
 			transform.position = node.position;
+			spriteRenderer.color = Utilits.Colors.Get(node.color);
 			//TOODOO
 		}
 		private void DestroyAppearance(Node node) {
