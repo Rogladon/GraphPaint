@@ -121,6 +121,13 @@ namespace Components.Graphs {
 				owner.SetPosition(position);
 			}
 		}
+		public class CmdSetColor : ACommand {
+			public Node owner;
+			public int color;
+			protected override void OnExecute() {
+				owner.SetColor(color);
+			}
+		}
 		#endregion
 	}
 }

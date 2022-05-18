@@ -9,14 +9,16 @@ namespace Components.Graphs {
 	public class Graph : IMementable, IAppearanceble<Graph> {
 
 		#region Fields
-		private List<Node> nodes = new List<Node>();
-		private List<Edge> edges = new List<Edge>();
+		private List<Node> _nodes = new List<Node>();
+		private List<Edge> _edges = new List<Edge>();
 		#endregion
 
 		#region Properties
-		public int count => nodes.Count;
+		public int count => _nodes.Count;
 		public event System.Action<Graph> OnChange;
 		public event System.Action<Graph> OnDestroy;
+		public List<Node> nodes => _nodes;
+		public List<Edge> edges => _edges;
 		#endregion
 
 		public Graph() {
@@ -26,12 +28,12 @@ namespace Components.Graphs {
 		}
 		#region Public Methods
 		private void RemoveNode(Node node) {
-			nodes.Remove(node);
+			_nodes.Remove(node);
 			node.Destroy();
 			OnChange(this);
 		}
 		private void AddNode(Node node) {
-			nodes.Add(node);
+			_nodes.Add(node);
 			OnChange(this);
 		}
 		private void AddEdge(Edge edge) {
@@ -42,7 +44,7 @@ namespace Components.Graphs {
 		}
 		private void RemoveEdge(Edge edge) {
 			edge.Destroy();
-			edges.Remove(edge);
+			_edges.Remove(edge);
 			OnChange(this);
 		}
 		#endregion
@@ -53,21 +55,21 @@ namespace Components.Graphs {
 		}
 
 		public void Destroy() {
-			nodes.ForEach(p => p.Destroy());
+			_nodes.ForEach(p => p.Destroy());
 			OnDestroy(this);
 		}
 		#endregion
 
 		#region Mementable
 		public IMemento CreateMemento() {
-			return new Memento() { owner = this, nodes = nodes.ToList() };
+			return new Memento() { owner = this, nodes = _nodes.ToList() };
 		}
 		private class Memento : IMemento {
 			public Graph owner;
 			public List<Node> nodes;
 			public void Restore() {
-				owner.nodes.Where(p => !nodes.Contains(p)).ForEach(p => owner.RemoveNode(p));
-				nodes.Where(p => !owner.nodes.Contains(p)).ForEach(p => owner.AddNode(p));
+				owner._nodes.Where(p => !nodes.Contains(p)).ForEach(p => owner.RemoveNode(p));
+				nodes.Where(p => !owner._nodes.Contains(p)).ForEach(p => owner.AddNode(p));
 			}
 		}
 		#endregion

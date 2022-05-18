@@ -29,6 +29,10 @@ namespace Components.Instruments {
 		private Selected selected = new Selected();
 		#endregion
 
+		#region Properties
+		public Graph graph => currentGraph;
+		#endregion
+
 
 		#region Public Methods
 		public void SetInstrumentLkm(InstrumentType type) {
