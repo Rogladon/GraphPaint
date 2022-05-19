@@ -30,6 +30,9 @@ namespace Components.HUD{
 					.SetActionOk(actionOk)
 					.ShowLog();
 			}
+			//TOODOO пока так, потом сделать отдельный объект
+			public static void Error(string title, string message,
+				string buttonOk = "Ok") => Log(title, message, buttonOk);
 
 			private static bool IsHud() {
 				if(_instance == null) {
