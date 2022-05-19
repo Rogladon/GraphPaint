@@ -24,7 +24,7 @@ namespace Components.Instruments {
 
 		#region Fields
 		[SerializeField] private InstrumentsCompound compound;
-		private Graphs.Graph currentGraph;
+		private Graphs.Graph currentGraph => Manager.Manager.instance.graph;
 		private IInstrument currentInstrumentLkm;
 		private Selected selected = new Selected();
 		#endregion
@@ -54,7 +54,6 @@ namespace Components.Instruments {
 					if (compound == null)
 						Debug.LogError($"{this}:: Не назначен и не найден InstrumentCompound");
 				}
-				currentGraph = new Graphs.Graph();
 				var bcl = new GameObject("InstrumentManagerCollider").AddComponent<BoxCollider>();
 				bcl.transform.SetParent(Camera.main.transform);
 				bcl.size = new Vector3(1000, 1000, 0.1f);
