@@ -27,22 +27,22 @@ namespace Components.Graphs {
 			Change();
 		}
 		#region Public Methods
-		private void RemoveNode(Node node) {
+		internal void RemoveNode(Node node) {
 			_nodes.Remove(node);
 			node.Destroy();
 			OnChange(this);
 		}
-		private void AddNode(Node node) {
+		internal void AddNode(Node node) {
 			_nodes.Add(node);
 			OnChange(this);
 		}
-		private void AddEdge(Edge edge) {
+		internal void AddEdge(Edge edge) {
 			edge.firstNode.AddEdge(edge);
 			edge.secondNode.AddEdge(edge);
 			
 			OnChange(this);
 		}
-		private void RemoveEdge(Edge edge) {
+		internal void RemoveEdge(Edge edge) {
 			edge.Destroy();
 			_edges.Remove(edge);
 			OnChange(this);
