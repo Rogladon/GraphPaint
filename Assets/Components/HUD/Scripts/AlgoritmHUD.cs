@@ -31,9 +31,10 @@ namespace Components.HUD {
 		private void Start() {
 			buttons.ForEach(p => p.Start(ClickAlgoritm));
 		}
-		private void ClickAlgoritm(AlgoritmType type) {
-			var res = AlgoritmManager.instance.ExecuteDrawAlgoritm(type);
-
+		private async void ClickAlgoritm(AlgoritmType type) {
+			HUD.StaticHUD.Loader(true);
+			var res = await AlgoritmManager.instance.ExecuteDrawAlgoritm(type);
+			HUD.StaticHUD.Loader(false);
 			if (res.status == ResStatus.EXECUTED) {
 				HUD.StaticHUD.Log("Алгоритм", $"Хроматическое число = {res.chromaticNumber}");
 			}

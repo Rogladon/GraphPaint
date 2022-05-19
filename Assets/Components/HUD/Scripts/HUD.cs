@@ -13,6 +13,7 @@ namespace Components.HUD{
 		#region Fields
 		[SerializeField] private MessageBox messageBox;
 		[SerializeField] private MessageBox errorBox;
+		[SerializeField] private GameObject loader;
 		#endregion
 
 		private void Awake() {
@@ -33,6 +34,8 @@ namespace Components.HUD{
 			//TOODOO пока так, потом сделать отдельный объект
 			public static void Error(string title, string message,
 				string buttonOk = "Ok") => Log(title, message, buttonOk);
+
+			public static void Loader(bool active) => _instance.loader.SetActive(active);
 
 			private static bool IsHud() {
 				if(_instance == null) {

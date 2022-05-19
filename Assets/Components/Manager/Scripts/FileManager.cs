@@ -2,6 +2,7 @@
 using System;
 using Components.Graphs;
 using UnityEngine;
+using System.Threading.Tasks;
 
 namespace Components.Manager {
 	public class FileManager {
@@ -12,7 +13,7 @@ namespace Components.Manager {
 			this.change = change;
 		}
 
-		public void Open(string path) {
+		public async Task Open(string path) {
 			if(!File.Exists(path)) {
 				Debug.LogError($"FileManager: Don`t exist path: {path}");
 				return;
@@ -20,7 +21,7 @@ namespace Components.Manager {
 			StreamReader stream = new StreamReader(path);
 			string str = stream.ReadToEnd();
 			stream.Close();
-			var g = new Graphs.File.ConvertColToGraph().Execute(str);
+			var g = await new Graphs.File.ConvertColToGraph().Execute(str);
 			change(g);
 		}
 	}

@@ -37,7 +37,8 @@ namespace Components.Graphs {
 		public void Destroy() {
 			firstNode.RemoveEdge(this);
 			secondNode.RemoveEdge(this);
-			OnDestroy(this);
+			if (OnDestroy != null)
+				OnDestroy(this);
 		}
 		#endregion
 

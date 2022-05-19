@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Components.Algoritm.DrawGraph;
+using System.Threading.Tasks;
 
 namespace Components.Algoritm {
 	public enum AlgoritmType {
@@ -30,14 +31,14 @@ namespace Components.Algoritm {
 		#endregion
 
 		#region Public Methods
-		public ResultDraw ExecuteDrawAlgoritm(AlgoritmType type) { //TOODOO как то придумать, чтоб возвращало нужный тип, но название функции одно
+		public async Task<ResultDraw> ExecuteDrawAlgoritm(AlgoritmType type) { //TOODOO как то придумать, чтоб возвращало нужный тип, но название функции одно
 			ResultDraw res;
 			switch (type) {
 				case AlgoritmType.SIMPLE_DRAW:
-					res = new SimpleDraw().Execute(graph);
+					res = await new SimpleDraw().Execute(graph);
 					break;
 				case AlgoritmType.DEEP_SEARCH:
-					res = new DeepSearch().Execute(graph);
+					res = await new DeepSearch().Execute(graph);
 					break;
 				default:
 					res = null;

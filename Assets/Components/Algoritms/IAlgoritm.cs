@@ -1,6 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using System.Threading.Tasks;
 
 namespace Components.Algoritm {
     public enum ResStatus {
@@ -8,8 +6,9 @@ namespace Components.Algoritm {
         EXECUTED = 1,
         FAILED = 2,
 	}
+    //TOODOO Заменить потом на мою систему асинхронных операций (из TryToSurvive)
     public interface IAlgoritm<res> where res:IResult {
-        public res Execute(Graphs.Graph graph);
+        public Task<res> Execute(Graphs.Graph graph);
     }
     public interface IResult {
         public ResStatus status { get; }

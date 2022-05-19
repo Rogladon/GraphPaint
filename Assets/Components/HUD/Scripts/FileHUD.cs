@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
 using Utilits;
+using System.Threading.Tasks;
 
 namespace Components.HUD{
 	public class FileHUD : MonoBehaviour {
@@ -26,7 +27,7 @@ namespace Components.HUD{
 		#endregion
 
 		#region Properties
-		public event System.Action<string> OnOk;
+		public event System.Func<string, Task> OnOk;
 		#endregion
 
 		#region Public Methods
@@ -85,13 +86,15 @@ namespace Components.HUD{
 			entry.Redo();
 			UpdateDir();
 		}
-		private void Ok() {
+		private async void Ok() {
 			if (!entry.Exist(fileName.text)) {
 				HUD.StaticHUD.Error("File Error!", "Такого файла не существует!");
 				return;
 			}
 			gameObject.SetActive(false);
-			OnOk(entry.GetFullPath(fileName.text));
+			HUD.StaticHUD.Loader(true);
+			await OnOk(entry.GetFullPath(fileName.text));
+			HUD.StaticHUD.Loader(false);
 		}
 		private void Cancel() {
 			gameObject.SetActive(false);

@@ -73,8 +73,9 @@ namespace Components.Graphs {
 			}
 		}
 		public void Destroy() {
-			_edges.ForEach(p => p.Destroy());
-			OnDestroy(this);
+			_edges.ToArray().ForEach(p => p.Destroy());
+			if(OnDestroy != null)
+				OnDestroy(this);
 		}
 		#endregion
 

@@ -16,7 +16,6 @@ namespace Components.Graphs {
 			if (template != null) {
 				template = Instantiate(template, transform);
 				var sr = template.GetComponent<SpriteRenderer>();
-				Debug.Log(go.transform.GetSummaryBoundsSprite().size);
 				var b = go.transform.GetSummaryBoundsSprite();
 				sr.size = b.size+Vector3.one*0.2f;
 				template.transform.localPosition = b.center;
