@@ -37,6 +37,8 @@ namespace Components.HUD{
 
 		#region Private Methods
 		private void Start() {
+			//TOODOO пока так, потом передлать по нормальному
+			OnOk += (str) => Manager.Manager.instance.file.Open(str);
 			UpdateDir();
 			btnUndo.onClick.AddListener(() => Undo());
 			btnRedo.onClick.AddListener(() => Redo());
@@ -88,8 +90,8 @@ namespace Components.HUD{
 				HUD.StaticHUD.Error("File Error!", "Такого файла не существует!");
 				return;
 			}
-			OnOk(entry.GetFullPath(fileName.text));
 			gameObject.SetActive(false);
+			OnOk(entry.GetFullPath(fileName.text));
 		}
 		private void Cancel() {
 			gameObject.SetActive(false);
