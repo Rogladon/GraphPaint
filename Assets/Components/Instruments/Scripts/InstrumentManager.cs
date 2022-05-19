@@ -24,7 +24,7 @@ namespace Components.Instruments {
 
 		#region Fields
 		[SerializeField] private InstrumentsCompound compound;
-		private Graphs.Graph currentGraph => Manager.Manager.instance.graph;
+		private Graph currentGraph => Manager.Manager.instance.graph;
 		private IInstrument currentInstrumentLkm;
 		private Selected selected = new Selected();
 		#endregion
