@@ -56,7 +56,8 @@ namespace Components.Graphs {
 
 		public void Destroy() {
 			_nodes.ForEach(p => p.Destroy());
-			OnDestroy(this);
+			if(OnDestroy != null)
+				OnDestroy(this);
 		}
 		#endregion
 
