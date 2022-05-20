@@ -8104,7 +8104,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1920, y: 1080, z: 1}
+  m_Size: {x: 10000, y: 10000, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2107682323
 GameObject:
@@ -8595,6 +8595,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2139009832}
   - component: {fileID: 2139009833}
+  - component: {fileID: 2139009834}
   m_Layer: 5
   m_Name: Files
   m_TagString: Untagged
@@ -8645,6 +8646,19 @@ MonoBehaviour:
   btnRedo: {fileID: 1781759438}
   btnOk: {fileID: 965617044}
   btnCancel: {fileID: 698167881}
+--- !u!65 &2139009834
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2139009831}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10000, y: 10000, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &4728549534244711734
 PrefabInstance:
   m_ObjectHideFlags: 0
