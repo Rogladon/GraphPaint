@@ -13,6 +13,13 @@ public static class PhysicsExtentions {
 		}
 		return false;
 	}
+	public static bool RaycastCamera(out RaycastHit hit, int layerMask) {
+		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+		if (Physics.Raycast(ray, out hit, float.MaxValue,layerMask)) {
+			return true;
+		}
+		return false;
+	}
 	public static Transform GetRaycastCamera() {
 		if (RaycastCamera(out RaycastHit hit)) {
 			return hit.transform;

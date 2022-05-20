@@ -1,0 +1,18 @@
+{
+    "name": "Workspace",
+    "rootNamespace": "",
+    "references": [
+        "GUID:9d615daee46b14849bba6bd3f8cfd46e",
+        "GUID:75eb0f8a801862c449d5352b59bedd84",
+        "GUID:3f2ddfd065e8e904fa0069445dc88250"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
