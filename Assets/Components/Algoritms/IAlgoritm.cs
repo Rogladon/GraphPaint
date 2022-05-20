@@ -12,6 +12,7 @@ namespace Components.Algoritm {
     }
     public interface IResult {
         public ResStatus status { get; }
+        public double time { get; }
         public void ExecuteCommand();
 	}
 }

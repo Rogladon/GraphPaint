@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 using node = Components.Algoritm.DrawGraph.Utilits.Node;
 
 namespace Components.Algoritm.DrawGraph {
-	public class SimpleDraw : IAlgoritmDraw {
-		public async Task<ResultDraw> Execute(Graph graph) {
+	public class SimpleDraw : AAlgoritmDraw {
+		protected override async Task<ResultDraw> OnExecute(Graph graph) {
             List<ACommand> commands = new List<ACommand>();
             List<node> dict = new List<node>();
             foreach (var i in graph.nodes) {

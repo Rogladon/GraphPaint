@@ -36,7 +36,7 @@ namespace Components.HUD {
 			var res = await AlgoritmManager.instance.ExecuteDrawAlgoritm(type);
 			HUD.StaticHUD.Loader(false);
 			if (res.status == ResStatus.EXECUTED) {
-				HUD.StaticHUD.Log("Алгоритм", $"Хроматическое число = {res.chromaticNumber}");
+				HUD.StaticHUD.Log("Алгоритм", res.ToString());
 			}
 		}
 		#endregion

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using node = Components.Algoritm.DrawGraph.Utilits.Node;
 
 namespace Components.Algoritm.DrawGraph {
-	public class DeepSearch : IAlgoritmDraw {
+	public class DeepSearch : AAlgoritmDraw {
         private class Vertex {
             private int id;
             private Node _node;
@@ -39,9 +39,14 @@ namespace Components.Algoritm.DrawGraph {
 			}
         }
 
-        public async Task<ResultDraw> Execute(Graph graph) {
-            List<Vertex> vertices = graph.nodes.Select(p => new Vertex(p)).ToList();
-            vertices.ForEach(p => p.SetNeiborhood(vertices));
+        protected override async Task<ResultDraw> OnExecute(Graph graph) {
+            List<Vertex> vertices = new List<Vertex>();
+
+            await Task.Run(() => {
+                vertices = graph.nodes.Select(p => new Vertex(p)).ToList();
+                vertices.ForEach(p => p.SetNeiborhood(vertices));
+            });
+            
             Stack<Vertex> history = new Stack<Vertex>();
             int chromaticNumber = 0;
 

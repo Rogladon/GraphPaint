@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace Components.Algoritm.DrawGraph {
-	public class Evristic : IAlgoritmDraw {
+	public class Evristic : AAlgoritmDraw {
 		private class Vertex : IComparable<Vertex> {
 			private Node _node;
 			private List<int> ignoreColors = new List<int>();
@@ -63,9 +63,14 @@ namespace Components.Algoritm.DrawGraph {
 				vertices.Add(v);
 			}
 		}
-		public async Task<ResultDraw> Execute(Graph graph) {
-			List<Vertex> vertices = graph.nodes.Select(p => new Vertex(p)).ToList();
-			vertices.ForEach(p => p.SetNeiborhood(vertices));
+		protected override async Task<ResultDraw> OnExecute(Graph graph) {
+			List<Vertex> vertices = new List<Vertex>();
+
+			await Task.Run(() => {
+				vertices = graph.nodes.Select(p => new Vertex(p)).ToList();
+				vertices.ForEach(p => p.SetNeiborhood(vertices));
+			});
+
 			List<Color> colors = new List<Color>();
 			List<ICommand> commands = new List<ICommand>();
 			int lastColor = 0;
