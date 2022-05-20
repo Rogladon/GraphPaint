@@ -9,14 +9,15 @@ namespace Components.CommandMemento.Command {
 	/// Выполняет последовательно набор команд без регистрации их в менеджере (как одну)
 	/// </summary>
 	public class CommandStack : ACommand {
-		private List<ACommand> commands = new List<ACommand>();
+		private List<ICommand> commands = new List<ICommand>();
 
-		public CommandStack(params ACommand[] commands) {
+		public CommandStack(params ICommand[] commands) {
 			this.commands = commands.ToList();
 		}
 
 		protected internal override void OnExecute() {
-			commands.ForEach(p => p.OnExecute());
+			CommandManager.instance.Registory(this);
+			commands.ForEach(p => p.Execute());
 		}
 	}
 }
