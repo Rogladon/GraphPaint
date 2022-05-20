@@ -9,6 +9,7 @@ namespace Components.Algoritm {
 	public enum AlgoritmType {
 		SIMPLE_DRAW,
 		DEEP_SEARCH,
+		EVRISTIC,
 	}
 	public class AlgoritmManager : MonoBehaviour {
 		#region Singlton
@@ -39,6 +40,9 @@ namespace Components.Algoritm {
 					break;
 				case AlgoritmType.DEEP_SEARCH:
 					res = await new DeepSearch().Execute(graph);
+					break;
+				case AlgoritmType.EVRISTIC:
+					res = await new Evristic().Execute(graph);
 					break;
 				default:
 					res = null;
